@@ -1,7 +1,8 @@
 programa {
   funcao inicio() {
     
-    inteiro idade = 30
+    inteiro idade
+    leia(idade)
 
     se (idade >= 65){
       escreva ("Você é um idoso")
