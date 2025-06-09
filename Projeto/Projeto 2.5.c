@@ -1,7 +1,21 @@
 #include <stdio.h>
 
+
+typedef struct {
+    int numero;       
+    char nome[50];   
+    float saldo;    
+} Conta;
+
+#define MAX_CONTAS 100
+Conta contas[MAX_CONTAS];
+int totalContas = 0;
+
 void criarConta() {
-    printf("Create Account option selected.");
+    printf("Create Account option selected.\n");
+    printf("Digite o seu nome: ");
+    scanf("%49[^\n]",conta[0].nome);
+    conta[0].saldo = 0;
 } 
 
 void exibirContas() {
