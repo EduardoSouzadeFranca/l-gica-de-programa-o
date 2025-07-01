@@ -10,7 +10,7 @@ typedef struct {
     char titulo[50];
     char autor[50];
     int ano;
-    int disponivel; // 1 - Sim | 0 - Não
+    int disponivel;
 } Livro;
 
 // Funções do Banco de Dados
@@ -55,6 +55,7 @@ int main() {
             break;
         case 1:
             cadastrarlivro(livros, &totallivros, &ids);
+            salvarDados(livros, totallivros);
             Sleep(5000);
             break;
         case 2:
@@ -67,18 +68,20 @@ int main() {
             break;
         case 4:
             buscarlivroC(livros, totallivros);
-            Sleep(5000);
+            Sleep(4500);
             break;
         case 5:
             buscarlivroT(livros, totallivros);
-            Sleep(5000);
+            Sleep(4500);
             break;
         case 6:
             atualizarlivro(livros, totallivros);
+            salvarDados(livros, totallivros);
             Sleep(5000);
             break;
         case 7:
             excluirlivro(livros, &totallivros, &ids);
+            salvarDados(livros, totallivros);
             Sleep(2000);
             break;
         default:
@@ -249,7 +252,7 @@ void exibirlivrosdisp(Livro livros[], int totallivros){
         return;
     }
 
-    int totaldisp;
+    int totaldisp = 0;
     for (int i = 0; i < totallivros; i++){
         if (livros[i].disponivel == 1){  
         printf("\n-- %dº Livro --\n", i+1);
@@ -390,7 +393,7 @@ void atualizarlivro(Livro livros[], int totallivros){
 
 void excluirlivro(Livro livros[], int *totallivros, int *ids){
     int numero;
-    printf("\nInforme o número da conta: ");
+    printf("Informe o código do livro: ");
     scanf("%d", &numero);
 
     int indice = LivroExiste(livros, *totallivros, numero);
