@@ -86,6 +86,7 @@ int main() {
             break;
         default:
             printf("Opção inválida. Tente novamente.");
+            Sleep(1000);
         }
         system("cls");
 
